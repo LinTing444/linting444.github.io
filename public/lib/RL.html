@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>日历</title>
+		<script src="./jquery-3.4.1.min.js"> </script>
+		<style type="text/css">
+			* {box-sizing:border-box;}
+			ul{list-style-type: none;}
+			body {font-family: Verdana,sans-serif;}
+			
+			.month{
+				padding: 70px 25px;
+				width: 100%;
+				background: #1abc9c;
+			}
+			.month ul{
+				margin: 0;
+				padding: 0;
+			}
+			.month ul li{
+				color: white;
+				font-size: 20px;
+				text-transform: uppercase; 
+				letter-spacing: 3px;
+			}
+			.prev {
+				float: left;
+				padding-top: 10px;
+			}
+			.next {
+				float: right;
+				padding-top: 10px;
+			}
+			
+			.weekdays {
+			    margin: 0;
+			    padding: 10px 0;
+			    background-color: #ddd;
+			}
+			
+			.weekdays li {
+			    display: inline-block;
+			    width: 13.6%;
+			    color: #666;
+			    text-align: center;
+			}
+			.days {
+			    padding: 10px 0;
+			    background: #eee;
+			    margin: 0;
+			}
+			
+			.days li {
+			    list-style-type: none;
+			    display: inline-block;
+			    width: 13.6%;
+				height: 30px;
+			    text-align: center;
+			    margin-bottom: 5px;
+			    font-size:12px;
+			    color: #777;
+			}
+			
+			.days .active {
+			    padding: 5px;
+			    background: #1abc9c;
+			    color: white !important
+				
+			}
+			
+			/* Add media queries for smaller screens */
+			@media screen and (max-width:720px) {
+			    .weekdays li, .days li {width: 13.1%;}
+			}
+			
+			@media screen and (max-width: 420px) {
+			    .weekdays li, .days li {width: 12.5%;}
+			    .days li .active {padding: 2px;}
+			}
+			
+			@media screen and (max-width: 290px) {
+			    .weekdays li, .days li {width: 12.2%;}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="month">
+			<ul>
+				<li class = "prev">👈</li>
+				<li class = "next">👉</li>
+				<li style="text-align: center;font-size: 40px;">
+				    DEC<br>
+				</li>
+				<li style="text-align: center">2019</li>
+			</ul>
+			<button type="button">退出查询</button>
+		</div>
+		<ul class="weekdays">
+		  <li>周日</li>
+		  <li>周一</li>
+		  <li>周二</li>
+		  <li>周三</li>
+		  <li>周四</li>
+		  <li>周五</li>
+		  <li>周六</li>
+		</ul>
+		<ul class="days">  
+		  <li>1</li>
+		  <li>2</li>
+		  <li>3</li>
+		  <li>4</li>
+		  <li>5</li>
+		  <li>6</li>
+		  <li>7</li>
+		  <li>8</li>
+		  <li>9</li>
+		  <li>10</li>
+		  <li>11</li>
+		  <li>12</li>
+		  <li>13</li>
+		  <li>14</li>
+		  <li>15</li>
+		  <li>16</li>
+		  <li>17</li>
+		  <li>18</li>
+		  <li>19</li>
+		  <li>20</li>
+		  <li>21</li>
+		  <li>22</li>
+		  <li>23</li>
+		  <li>24</li>
+		  <li>25</li>
+		  <li>26</li>
+		  <li>27</li>
+		  <li>28</li>
+		  <li>29</li>
+		  <li>30</li>
+		  <li id="la">31</li>
+		</ul>
+		<script type="text/javascript">
+			var timer;
+			Timer ();
+			var Month =
+			[
+				"Jan",
+				"Feb",
+				"Mar",
+				"Apr",
+				"May",
+				"Jun",
+				"Jul",
+				"Aug",
+				"Sept",
+				"Oct",
+				"Nov",
+				"Dec",
+			]
+			var small =
+			[
+				"Apr",
+				"Jun",
+				"Sept",
+				"Nov",
+			]
+			// 给向左绑定点击事件
+			$(".prev").on("click",function () {
+				
+				// 清除当天标记和定时器
+				removeD ()
+				Timer (1);
+				
+				for(var i = 0; i < 12;i++){
+					// 找出当前显示月份
+					if(Month[i] == $(".month ul li:eq(2)").html()){
+						
+						// 找出当月1号前有几个空格
+						var nu = 0;     //循环
+						var Nu ;     //计数
+						$(".days li:lt(7)").each(function  () {
+							if($(this).html() == "1"){
+								Nu = nu
+								console.log(Nu)
+								return Nu
+							}
+							nu++
+							return Nu
+						})
+						
+						// 清空空格
+						$(".days li:empty").remove()
+						
+						// 封装计算空格函数
+						function NULL (a) {
+							var Null
+							if((a - Nu) % 7 == 0){
+								Null = 0
+							}else{
+								Null = 7 - ((a - Nu) % 7)
+							}
+							for(var l = 0; l < Null; l ++){
+								$(".days").prepend("<li></li> ")
+							}
+						}
+						
+						
+						// 判断是否为一月
+						if(i == 0){
+							var Year =  parseInt($(".month ul li:eq(3)").html()) 
+							$(".month ul li:eq(3)").html(Year-1)
+							i = 12
+						}
+						
+						// 修改月份内容
+						$(".month ul li:eq(2)").html(Month[i-1])
+						
+						var num = 0
+						var day = 0
+						
+						// 30天
+						for(var j = 0; j < 4; j++){
+							if(Month[i-1] == small[j]){
+								$(".days li:eq(30)").remove()
+								NULL(30);
+								num = 1
+								return num 
+							}
+						}
+						
+						// 2月
+						if(i == 2){
+							var Year= parseInt($(".month ul li:eq(3)").html())
+							if(Year % 4 == 0){
+								console.log("闰年")
+								$(".days li:contains('30')").remove()
+								$(".days li:contains('31')").remove()
+								NULL(29);
+							}else{
+								console.log("平年")
+								$(".days li:gt(27)").remove()
+								NULL(28);
+							}
+							num = 1
+							return num
+						}
+						
+						//31天
+						if(num == 0){
+							if($(".days li:eq(28)").html() == undefined){
+								$(".days").append("<li>29</li> ")
+							}
+							if($(".days li:eq(29)").html() == undefined){
+								$(".days").append("<li>30</li> ")
+							}
+							if($(".days li:eq(30)").html() == undefined){
+								$(".days").append("<li>31</li> ")
+							}
+							NULL(31);
+						}
+						
+						
+					}
+				}
+			})
+			
+			// 给向右绑定点击事件
+			$(".next").on("click",function () {
+				
+				// 清除当天标记和定时器
+				removeD ()
+				Timer (1);
+				
+				for(var i = 11; i >= 0;i--){
+					
+					// 找出当前显示月份
+					if(Month[i] == $(".month ul li:eq(2)").html()){
+						
+						// 打印空格
+						var L = $(".days li").length % 7
+						$(".days li:empty").remove()
+						for(var m = 0; m < L; m++){
+							$(".days").prepend("<li></li> ")
+						}
+						
+						console.log(L)
+						// 判断是否为十二月
+						if(i == 11){
+							var Year =  parseInt($(".month ul li:eq(3)").html()) 
+							$(".month ul li:eq(3)").html(Year+1)
+							i = -1
+						}
+						
+						// 修改月份内容
+						$(".month ul li:eq(2)").html(Month[i+1])
+						
+						var num = 0
+						var day = 0
+						
+						// 30天
+						for(var j = 0; j < 4; j++){
+							if(Month[i+1] == small[j]){
+								$(".days li:contains('31')").remove()
+								num = 1
+								console.log(30)
+								return num 
+							}
+						}
+						
+						// 2月
+						if(i == 0){
+						
+							var Year= parseInt($(".month ul li:eq(3)").html())
+							if(Year % 4 != 0){
+								$(".days li:contains('29')").remove()
+							}
+								$(".days li:contains('30')").remove()
+								$(".days li:contains('31')").remove()
+							num = 1
+								console.log($(".days li:contains('32')"))
+							return num
+						}
+						
+						//31天
+						if(num == 0){
+							if($(".days li:contains('29')").length == 0){
+								$(".days").append("<li>29</li> ")
+							}
+							if($(".days li:contains('30')").length == 0){
+								$(".days").append("<li>30</li> ")
+							}
+							if($(".days li:contains('31')").length == 0){
+								$(".days").append("<li>31</li> ")
+							}
+						}
+					}
+				}
+			})
+			
+			// 回到当前日期
+			$("button:first").on("click",function  () {
+				$(".days li:empty").remove()
+				Timer ();
+			})
+			
+			// 定时器，标记当天以及年、月
+			function Timer (a) {
+				if(a == 1){
+					clearInterval(timer);
+				}else{
+					timer = setInterval(function  () {
+						// 截出月份
+						$(".month ul li:eq(2)").html(Date().slice(4,7))
+						
+						// 截出年份
+						$(".month ul li:eq(3)").html(Date().slice(11,16))
+						
+						//标记当天
+						$(".days li").each(function  () {
+							$(this).removeClass("active")
+							if($(this).text() == Date().slice(8,10)){
+								$(this).addClass("active")
+							}
+						})
+						
+						
+						
+					},1000)
+				}
+			}
+			
+			// 清空当天标记
+			function removeD () {
+				$(".days li").each(function  () {
+					$(this).removeClass("active")
+				})
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

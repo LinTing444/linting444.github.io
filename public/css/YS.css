@@ -1,0 +1,529 @@
+    *{
+		margin: 0;
+		padding: 0;
+    }
+	ul{list-style-type: none;}	
+	a{ text-decoration: none;}	
+	
+	
+		/* 头 */
+		#Head{
+			width: 78%;
+			height: 160px;
+			position: absolute;
+			right: 0px;
+			background-color: white;
+		}
+				/* 给时间上样式 */
+				#time{
+					position: absolute;
+					top: 60px;
+					right: 160px;
+					font-size: 40px;
+					cursor: default;
+				}
+				/* 给日历链接上样式 */
+				#cale{
+					color: #7FFFD4;
+					position: absolute;
+					top: 60px;
+					right: 16px;
+					font-size: 40px;
+				}
+				/* 日历标签悬浮 */
+				#cale:hover{
+					color:#1ABC9C ;
+				}
+			
+				
+		/* 导航栏 */
+		#Navigation{
+			width: 78%;
+			height: 48px;
+			position: absolute;
+			top: 160px;
+			right: 0px;
+			background-color: aquamarine;
+		}
+				/* 导航栏内容位置 */
+				#Navigation #Dao{
+					width: 90%;
+					height: 45px;
+					line-height: 45px;
+					font-size: large;
+					float: right;
+				}
+				/* 各个span的外边距 */
+				#Navigation #Dao span{
+					margin-left: 100px;
+				}
+				/* span鼠标悬浮 */
+				#Navigation #Dao span:hover{
+					font-size: x-large;
+					cursor: pointer;
+				}
+				/* 首页内容设置 */
+				.nei{
+					width: 90%;
+					height: 350px;
+					font-size: 20px;
+					float: right;
+					padding-top: 20px;
+					padding-left: 50px;
+				}
+						/* 标题设置 */
+						.BT{
+							font-size: 40px;
+							color:black;
+						}
+						/* 图片设置 */
+						.tt,.tt1,.tt2{
+							width: 200px;
+							height: 200px;
+							border: 1px solid rebeccapurple;
+							float: right;
+							transform: rotate(10deg);
+							transition:transform 2s;
+							-webkit-transition:transform 2s;
+						}
+						/* 鼠标在图片上悬浮 */
+						.tt:hover,.tt1:hover,.tt2:hover{
+							transform: rotate(1080deg);
+						}
+						/* 标题上悬浮 */
+						.BT:hover{
+							color:#1ABC9C;
+						}
+						/* 日期 */
+						.RQ{
+							font-size: 15px;
+							color: darkgray;
+							cursor: default;
+						}
+						/* 阅读全文 */
+						.YDQW{
+							font-size: 18px;
+						}
+				/* 归档内容设置 */
+						.Year{
+							font-size: 40px;
+							color:rgb(35, 141, 120);
+							cursor: default;
+						}	
+						.Month{
+							font-size: 25px;
+							color:#1ABC9C;
+							cursor: default;
+						}
+						.Day{
+							font-size: 20px;						
+						}
+				/* 分类内容设置 */
+						/* 分类名 */
+						.FLM{
+							width: 90%;
+							font-size: 40px;
+							float: right;
+							padding-top: 20px;
+							padding-left: 50px;
+							color:#1ABC9C;
+							cursor:default;
+						}
+						
+						/* 一共有几篇文章 */
+						.Size{
+							width: 90%;
+							font-size: 10px;
+							float: right;
+							padding-top: 20px;
+							cursor: default;
+							
+						}
+						/* 内容设置 */
+						.nei2{
+							width: 90%;
+							font-size: 20px;
+							float: right;
+							padding-top: 20px;
+							padding-left: 50px;
+						}
+						.nei2 li{
+							line-height: 5px;
+							margin-left: 50px;
+						}
+						/* 文章时间 */
+						.sj{
+							float: right;
+							cursor: default;
+							color: darkgray;
+						}
+
+
+
+		/* 左边信息框背景 */
+		#Left{
+			width: 20%;
+			height: 1120px;
+			/* width: 480px;
+			height: 1120px; */
+			background-image: url("/public/tu/BJ.jpg");
+			opacity: 0.6;
+			position: fixed;
+			box-shadow: 5px 5px 3px #A9A9A9;
+		}
+		/* 隐藏个签 */
+		#PerS2{
+			width: 224px ;
+			height: 224px;
+			background-color: #7FFFD4;
+			display: none;
+			position: absolute;
+			padding-top: 32px;
+			text-indent: 32px;
+			opacity: 0.5;
+		}
+		/* 左边信息框核心 */
+		#Left2{
+			width: 20%;
+			height: 1120px;
+			position: fixed;
+			overflow: hidden;
+		}
+				/* 头像 */
+				#headPortrait{
+					width: 160px;
+					height: 160px;
+					border: 2px solid #000000;
+					border-radius: 50%;
+					position: absolute;
+					left: 32px;
+					top: 64px;
+				}
+				/* 昵称 */
+				#name{
+					position: absolute;
+					left: 240px;
+					top: 80px;
+					cursor: default;
+				}
+				/* 个签 */
+				#PerS{
+					width: 224px;
+					height: 24px;
+					overflow: hidden;
+					position: absolute;
+					left: 240px;
+					top: 160px;
+					cursor: zoom-in;
+				}
+				
+				/* 任务栏 */
+				.RWL{
+					width: 480px;
+					height: 48px;
+					line-height: 48px;
+					
+				}
+						/* 首页 */
+						#home{
+							position: absolute;
+							top: 320px;
+							background-color: aquamarine;
+						}
+						/* 关于 */
+						#aboutMe{
+							position: absolute;
+							top: 368px;
+						}
+						/* 友链 */
+						#boke{
+							position: absolute;
+							top: 416px;
+						}
+				
+
+
+		/* 内容 */
+		#Content{
+			width: 78%;
+			position: absolute;
+			right: 0;
+			top: 210px;
+		}   
+				/* 内容所有边框 */
+				#Content .gy{
+					padding-top: 100px;
+					border-bottom: 2px solid  darkgray;
+					height: 1200px;
+				}
+				/* 大字标题 */
+				#Content div h1{
+					font-size: 50px;
+					color: #1ABC9C;
+					text-align: center;
+					cursor: default;
+				}
+				/* 模板的样式 */
+				#h{
+					height: 2000px;
+					padding-top: 100px;
+					border-bottom: 2px solid  darkgray;
+					overflow: hidden;
+				}
+				
+				/* 上一页 */
+				.prev {
+					width: 100px;
+					height: 60px;
+					border:1px solid #A9A9A9;
+					border-radius: 50px;
+					display: inline-block;
+					font-size: 50px;
+					text-align: center;
+					line-height: 35px;
+					position: absolute;
+					top: 2000px;
+					left: 200px;
+				}
+				/* 下一页 */
+				.next {
+					width: 100px;
+					height: 60px;
+					border:1px solid #A9A9A9;
+					border-radius: 50px;
+					display: inline-block;
+					font-size: 50px;
+					text-align: center;
+					line-height: 35px;
+					position: absolute;
+					top: 2000px;
+					right: 100px;
+				}
+				.zhengwen{
+					width: 70%;
+					float: right;
+					font-size: 30px;
+					padding-right: 300px;
+					line-height: 50px;
+				}
+
+
+				/* 设置没了样式 */
+				#prev1{
+					font-size: 10px;
+					line-height: 60px;
+					cursor: default;
+				}
+				#next1{
+					font-size: 10px;
+					line-height: 60px;
+					cursor: default;
+				}
+
+				/* 关于我 */
+				
+				#a .nei{
+					width: 75%;
+					height: 900px;
+					display: inline;
+					overflow: hidden;
+					position: absolute;
+					left: 175px;
+					top: 2350px;
+					display: flex;
+					text-align: center;
+				}
+				/* 左边 */
+				#a .nei .aLeft{
+					width: 20%;
+					height: 880px;
+					float: left;
+					
+				}
+				/* 左上 */
+				#a .nei .aLeft .aLeftUp{
+					width: 100%;
+					height: 700px;
+					box-shadow:1px 3px 5px black;
+				}
+				/* 左下 */
+				#a .nei .aLeft .aLeftDown{
+					width: 100%;
+					height: 150px;
+					margin-top: 28px;
+					box-shadow:1px 3px 5px black;
+					font-size: 10px;
+					cursor: default;
+				}
+				/* 个人资料 */
+				.grzl{
+					height: 20px;
+					border-bottom: 1px solid black;
+					text-align: left;
+					text-indent: 1em;
+					cursor: default;
+				}
+				/* 我的头像 */
+				.myTX{
+					height: 280px;
+					border-bottom: 1px dashed #A9A9A9;
+				}
+				/* 按钮 */
+				.an{
+					height: 100px;
+					border-bottom: 1px dashed #A9A9A9;
+				}
+				/* 荣誉 */
+				.yy{
+					text-align: left;
+					text-indent: 2em;
+					cursor: default;
+				}
+				/* 按钮 */
+				.an button{
+					width: 80px;
+					margin: 12px;
+				}
+
+				/* 右边 */
+				#a .nei .aRight{
+					width: 78%;
+					height: 870px;
+					float: right;
+					margin-left: 26px;
+					cursor: default;
+				}
+				/* 右上 */
+				#a .nei .aRight .aRightUp{
+					width: 100%;
+					height: 500px;
+					box-shadow:1px 3px 5px black;
+				}
+				.da{
+					height: 120px;
+					border-bottom: 1px dashed #A9A9A9;
+				}
+
+				/* 右下 */
+				#a .nei .aRight .aRightDown{
+					width: 100%;
+					height: 350px;
+					margin-top: 28px;
+					box-shadow:1px 3px 5px black;
+				} 
+				.aRightUp h5,.aRightUp p{
+					text-align: left;
+					text-indent: 2em;
+				}
+				.aRightDown p{
+					padding-top: 80px;
+				}
+				/* 友链 */
+				/* 图 */
+				#youyou img{
+					width: 256px;
+					height: 256px;
+					border: 1px solid darkgray;
+					border-radius: 50%;
+					transform: rotate(0deg);
+					transition:transform 2s;
+					-webkit-transition:transform 2s;
+					margin: 15px;
+				}
+				#youyou img:hover{
+					transform: rotate(360deg);
+				}
+				/* 称呼 */
+				.ming{
+					display: inline-block;
+					width: 256px;
+					height: 256px;
+					margin: 15px;
+					text-align: center;
+					font-size: 30px;
+				}
+				/* 表单 */
+				#BD{
+					position: absolute;
+					top: 4000px;
+				}
+				/* 发表 */
+				.FB{
+					width: 1520px;
+					height: 30px;
+					border: 1px solid #A9A9A9;
+					border-bottom: none;
+					line-height: 30px;
+					color: #A9A9A9;
+					cursor: default;
+				}
+				/* 发表框 */
+				.M{
+					width: 90%;
+					float: right;
+				}
+				/* 文本 */
+				.text{
+					width: 500px;
+					height: 50px;
+				}
+				/* 文本域 */
+				.textarea{
+					width: 1520px;
+					height: 200px;
+					border-top: none;
+				}
+				/* 提交 */
+				.submit{
+					width: 100px;
+					height: 50px;
+					border-radius: 25%;
+				}
+				/* 评论展示 */
+				#RE{
+					position: absolute;
+					top: 4350px;
+					left: 175px;
+				}
+				/* 已有评论 */
+				.YY{
+					width: 1520px;
+					height: 30px;
+					border: 1px solid #A9A9A9;
+					line-height: 30px;
+					cursor: default;
+					background-color: rgb(236, 230, 230);
+				}
+				.YY span {
+					color: red;
+				}
+				.pp{
+					width: 1440px;
+					height: 100px;
+					border: 1px solid #A9A9A9;
+					margin: 10px;
+					display: inline-block;
+					font-size: 25px;
+					border-left: none;
+				}
+				.ppImg{
+					border-radius: 50%;
+					transform: rotate(0deg);
+					transition:transform 2s;
+					-webkit-transition:transform 2s;
+				}
+				.ppImg:hover{
+					transform: rotate(360deg);
+				}
+		/* 底部 */
+		#Bottom{
+			width: 78%;
+			height: 60px;
+			border: 1px solid black;
+			text-align: center;
+			color: darkgray;
+			line-height: 60px;
+			position: absolute;
+			right: 0;
+			cursor: default;
+		}
